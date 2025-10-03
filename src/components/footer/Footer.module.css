@@ -1,0 +1,16 @@
+.footerContainer {
+    width: 100%;
+    border-top: 2px solid rgba(245, 245, 245, 0.6);
+    height: 4.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 0.4rem;
+    background-color: rgba(10, 24, 34, 0.7);
+}
+
+.footerText {
+    font-size: 0.8rem;
+}

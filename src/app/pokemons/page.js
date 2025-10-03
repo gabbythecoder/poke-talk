@@ -21,29 +21,33 @@ export default async function PokemonsPage({ searchParams }) {
     }
 
     return (
-        <div>
-            <div>
+        <div className="pokemon-page-container">
+            <div className="sort-container">
                 <p>Sort: </p>
-                <Link href={"/pokemons?sort=asc"}>A-Z</Link>
-                <Link href={"/pokemons?sort=desc"}>Z-A</Link>
+                <Link className="sort-button" href={"/pokemons?sort=asc"}>A-Z</Link>
+                <Link className="sort-button" href={"/pokemons?sort=desc"}>Z-A</Link>
             </div>
 
+            <div className="pokemon-list-wrapper">
             {pokemons.map((pokemon) => {
                 return (
-                    <div key={pokemon.id}>
+                    <div className="pokemon-list" key={pokemon.id}>
                         <Image 
                             src={pokemon.small_image_url}
                             alt={pokemon.name}
-                            width={100}
-                            height={100}
+                            width={135}
+                            height={135}
+                            placeholder="blur"
+                            className="pokemon-small-image"
                         />
 
-                        <Link href={`/pokemons/${pokemon.id}`}>
+                        <Link className="pokemon-list-button" href={`/pokemons/${pokemon.id}`}>
                             <h2>{pokemon.name}</h2>
                         </Link>
                     </div>
                 )
             })}
+            </div>
         </div>
     )
 }

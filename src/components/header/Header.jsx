@@ -18,13 +18,15 @@ export default function Header() {
                 src={HeaderLogo}
                 alt="poketalk logo"
                 className={headerStyle.logoImage}
+                placeholder="blur"
+                priority
             />
 
             <nav className={headerStyle.navBar}>
                 <Link className={
-                    pathname === "/" ? `${headerStyle.navLink} ${headerStyle.active}` : headerStyle.navLink} href={"/"}>HOME</Link>
+                        pathname === "/" ? `${headerStyle.navLink} ${headerStyle.active}` : headerStyle.navLink} href={"/"}>HOME</Link>
                 <Link className={
-                            pathname.includes("/pokemons") ? `${headerStyle.navLink} ${headerStyle.active}` : headerStyle.navLink} href={"/pokemons"}>POKÉMON</Link>
+                        pathname.includes("/pokemons") ? `${headerStyle.navLink} ${headerStyle.active}` : headerStyle.navLink} href={"/pokemons"}>POKÉMON</Link>
             </nav>
 
             </div>
