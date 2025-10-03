@@ -3,13 +3,33 @@
 import { db } from "@/utils/database-connection";
 import Link from "next/link";
 
-export default async function PokemonsPage() {
+export default async function PokemonsPage({ searchParams }) {
     const query = await db.query(`SELECT id, name, type, ability, description FROM pokemon`);
 
     const pokemons = query.rows;
 
+    const sort = await searchParams;
+    const sortOrder = sort.sort;
+
+    if (sortOrder === "asc") {
+        pokemons.sort((a, b) => {
+            return a.name.localeCompare(b.name);
+        });
+    } else if (sortOrder === "desc") {
+        pokemons.sort((a, b) => {
+            return b.name.localeCompare(a.name);
+        })
+    }
+
+
     return (
         <div>
+            <div>
+                <p>Sort: </p>
+                <Link href={"/pokemons?sort=asc"}>A-Z</Link>
+                <Link href={"/pokemons?sort=desc"}>Z-A</Link>
+            </div>
+
             {pokemons.map((pokemon) => {
                 return (
                     <div key={pokemon.id}>
