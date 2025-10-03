@@ -1,5 +1,7 @@
 import { db } from "@/utils/database-connection";
 import Image from "next/image";
+import CommentsForm from "@/components/commentsform/CommentsForm";
+import DeleteButton from "@/components/deletebutton/DeleteButton";
 
 export default async function PokemonIdPage({ params }) {
     const pokemonId = (await params).pokemonId;
@@ -38,9 +40,10 @@ export default async function PokemonIdPage({ params }) {
         </div>
 
         <div>
+
             <h2>Comments:</h2>
             {comments.length === 0 ? (
-                <p>No comments yet</p>
+                <p>Be the first to leave a comment!</p>
             ) : ( 
                 comments.map((comment) => {
                     return (
@@ -48,12 +51,16 @@ export default async function PokemonIdPage({ params }) {
                             <p>{comment.user_name}</p>
                             <p>{comment.comment}</p>
                             <p>Rating: {comment.rating}</p>
+
+                            <DeleteButton commentId={comment.id} pokemonId={pokemon.id}/>
                         </div>
                     )
                 })
             )}
         </div>
-        
+
+            <CommentsForm pokemonId={pokemon.id}/>
+
         </div>
     )
 }
