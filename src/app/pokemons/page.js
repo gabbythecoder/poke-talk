@@ -1,10 +1,9 @@
-// todo - set up a sorting filter (searchParams)
-
 import { db } from "@/utils/database-connection";
 import Link from "next/link";
+import Image from "next/image";
 
 export default async function PokemonsPage({ searchParams }) {
-    const query = await db.query(`SELECT id, name, type, ability, description FROM pokemon`);
+    const query = await db.query(`SELECT id, name, type, ability, description, small_image_url FROM pokemon`);
 
     const pokemons = query.rows;
 
@@ -21,7 +20,6 @@ export default async function PokemonsPage({ searchParams }) {
         })
     }
 
-
     return (
         <div>
             <div>
@@ -33,6 +31,13 @@ export default async function PokemonsPage({ searchParams }) {
             {pokemons.map((pokemon) => {
                 return (
                     <div key={pokemon.id}>
+                        <Image 
+                            src={pokemon.small_image_url}
+                            alt={pokemon.name}
+                            width={100}
+                            height={100}
+                        />
+
                         <Link href={`/pokemons/${pokemon.id}`}>
                             <h2>{pokemon.name}</h2>
                         </Link>
