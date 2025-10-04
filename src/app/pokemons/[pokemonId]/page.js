@@ -3,6 +3,7 @@ import Image from "next/image";
 import CommentsForm from "@/components/commentsform/CommentsForm";
 import DeleteButton from "@/components/deletebutton/DeleteButton";
 import PokeballIcon from "@/../public/images/pokeball-icon.png";
+import Link from "next/link";
 
 export default async function PokemonIdPage({ params }) {
     const pokemonId = (await params).pokemonId;
@@ -65,8 +66,12 @@ export default async function PokemonIdPage({ params }) {
                                     />
                                 )})}
                             </div>
-
+                            
+                        <div className="comment-actions">
+                            <Link href={`/comments/${comment.id}/edit`} className="edit-button">Edit</Link>
                             <DeleteButton commentId={comment.id} pokemonId={pokemon.id}/>
+                        </div>
+
                         </div>
                     )
                 })

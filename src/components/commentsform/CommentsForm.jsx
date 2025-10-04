@@ -2,8 +2,6 @@ import { db } from "@/utils/database-connection";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import "./CommentsForm.css";
-import Image from "next/image";
-import PokeballIcon from "@/../public/images/pokeball-icon.png";
 
 export default function CommentsForm({ pokemonId }) {
 
@@ -52,60 +50,26 @@ export default function CommentsForm({ pokemonId }) {
                     rows="3" 
                     cols="10" 
                     placeholder="Please add your comments for this pokémon"
+                    required
                 ></textarea>
 
-                <fieldset className="form-fieldset">
+                <fieldset className="form-fieldset rating-group">
                     <legend className="form-legend">Poké Rating:</legend>
 
-                        <input hidden type="radio" name="rating" id="rating1" value="1" required className="radio-button"/>
-                        <label htmlFor="rating1">
-                            <Image 
-                                src={PokeballIcon}
-                                alt="Pokeball rating icon"
-                                width={25}
-                                height={25}
-                            />
-                        </label>
-
-                        <input hidden type="radio" name="rating" id="rating2" value="2" required className="radio-button"/>
-                        <label htmlFor="rating2">
-                            <Image 
-                                src={PokeballIcon}
-                                alt="Pokeball Icon"
-                                width={25}
-                                height={25}
-                            />
-                            </label>
-
-                        <input hidden type="radio" name="rating" id="rating3" value="3" required className="radio-button"/>
-                        <label htmlFor="rating3">
-                            <Image 
-                                src={PokeballIcon}
-                                alt="Pokeball Icon"
-                                width={25}
-                                height={25}
-                            />
-                            </label>
+                        <input hidden type="radio" name="rating" id="rating5" value="5" required className="radio-button"/>
+                        <label htmlFor="rating5"></label>
 
                         <input hidden type="radio" name="rating" id="rating4" value="4" required className="radio-button"/>
-                        <label htmlFor="rating4">
-                            <Image 
-                                src={PokeballIcon}
-                                alt="Pokeball Icon"
-                                width={25}
-                                height={25}
-                            />
-                            </label>
+                        <label htmlFor="rating4"></label>
 
-                        <input hidden type="radio" name="rating" id="rating5" value="5" required className="radio-button"/>
-                        <label htmlFor="rating5">
-                            <Image 
-                                src={PokeballIcon}
-                                alt="Pokeball Icon"
-                                width={25}
-                                height={25}
-                            />
-                            </label>
+                        <input hidden type="radio" name="rating" id="rating3" value="3" required className="radio-button"/>
+                        <label htmlFor="rating3"></label>
+
+                        <input hidden type="radio" name="rating" id="rating2" value="2" required className="radio-button"/>
+                        <label htmlFor="rating2"></label>
+
+                        <input hidden type="radio" name="rating" id="rating1" value="1" required className="radio-button"/>
+                        <label htmlFor="rating1"></label>
                 </fieldset>
                 <button className="submit-button" type="submit">Submit</button>
             </form>
