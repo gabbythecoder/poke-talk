@@ -2,6 +2,7 @@ import { db } from "@/utils/database-connection";
 import Image from "next/image";
 import CommentsForm from "@/components/commentsform/CommentsForm";
 import DeleteButton from "@/components/deletebutton/DeleteButton";
+import PokeballIcon from "@/../public/images/pokeball-icon.png";
 
 export default async function PokemonIdPage({ params }) {
     const pokemonId = (await params).pokemonId;
@@ -24,42 +25,57 @@ export default async function PokemonIdPage({ params }) {
     // console.log(comments);
 
     return (
-        <div>
+        <div className="pokemon-details-page">
 
-        <div>
+        <div className="pokemon-info">
+            <h2 className="pokemon-name">{pokemon.name}</h2>
             <Image 
                 src={pokemon?.image_url}
                 alt={pokemon.name}
-                width={500}
-                height={500}
+                width={450}
+                height={450}
+                className="pokemon-image"
             />
-            <h2>{pokemon.name}</h2>
-            <h3>Type: {pokemon.type}</h3>
-            <h3>Abilities: {pokemon.ability}</h3>
-            <p>{pokemon.description}</p>
+
+            <h3 className="pokemon-type-ability">Type: {pokemon.type}</h3>
+            <h3 className="pokemon-type-ability">Abilities: {pokemon.ability}</h3>
+            <p className="pokemon-description">{pokemon.description}</p>
         </div>
 
-        <div>
-
-            <h2>Comments:</h2>
+        <div className="pokemon-comments-section">
+            <h2 className="comments-title">TRAINERS COMMENTS:</h2>
+            <div className="comments-box">
             {comments.length === 0 ? (
                 <p>Be the first to leave a comment!</p>
             ) : ( 
                 comments.map((comment) => {
                     return (
-                        <div key={comment.id}>
-                            <p>{comment.user_name}</p>
+                        <div className="single-comment" key={comment.id}>
+                            <p className="comment-username">{comment.user_name}</p>
                             <p>{comment.comment}</p>
-                            <p>Rating: {comment.rating}</p>
+
+                            <div className="rating-icons">
+                                <p>Rating:</p>
+                                {Array.from({ length: comment.rating }).map((_, i) => {
+                                    return (
+                                    <Image 
+                                        key={i}
+                                        src={PokeballIcon}
+                                        alt="Pokeball rating icon"
+                                    />
+                                )})}
+                            </div>
 
                             <DeleteButton commentId={comment.id} pokemonId={pokemon.id}/>
                         </div>
                     )
                 })
             )}
+            </div>
+            
+                <CommentsForm pokemonId={pokemon.id}/>
+                    
         </div>
-
-            <CommentsForm pokemonId={pokemon.id}/>
 
         </div>
     )

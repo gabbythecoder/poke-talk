@@ -1,5 +1,6 @@
 import { db } from "@/utils/database-connection";
 import { revalidatePath } from "next/cache";
+import "./DeleteButton.css";
 
 export default function DeleteButton({ commentId, pokemonId }) {
 
@@ -16,9 +17,9 @@ export default function DeleteButton({ commentId, pokemonId }) {
     }
 
     return (
-        <form action={handleDelete}>
+        <form action={handleDelete} className="delete-form">
             <input type="hidden" name="id" value={commentId}/>
-            <button type="submit">Delete</button>
+            <button className="delete-button" type="submit">Delete</button>
         </form>
     )
 }

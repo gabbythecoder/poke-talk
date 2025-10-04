@@ -5,7 +5,9 @@ import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 
 const nunitoSans = Nunito_Sans({
-  weight: "500",
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  subsets: ["latin"]
 })
 
 export const metadata = {

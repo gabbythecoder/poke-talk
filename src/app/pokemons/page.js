@@ -37,7 +37,7 @@ export default async function PokemonsPage({ searchParams }) {
                             alt={pokemon.name}
                             width={135}
                             height={135}
-                            placeholder="blur"
+                            
                             className="pokemon-small-image"
                         />
 
