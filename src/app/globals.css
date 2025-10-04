@@ -45,8 +45,10 @@ body {
   justify-content: center;
   align-items: center;
   margin: 1.5rem;
-  height: 80vh;
+  /* height: 80vh; */
   box-sizing: border-box;
+  height: 100%;
+  margin-top: 3rem;
 }
 
 .homepage-welcome {
@@ -242,7 +244,9 @@ body {
   align-items: center;
   gap: 2rem;
   padding: 2rem;
-  height: 80vh;
+  /* height: 80vh; */
+  height: 100%;
+  margin-top: 2rem;
 }
 
   /* === left panel of the page */
