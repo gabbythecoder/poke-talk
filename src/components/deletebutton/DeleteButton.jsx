@@ -19,7 +19,7 @@ export default function DeleteButton({ commentId, pokemonId }) {
     return (
         <form action={handleDelete} className="delete-form">
             <input type="hidden" name="id" value={commentId}/>
-            <button className="delete-button" type="submit">Delete</button>
+            <button className="delete-button" type="submit"><i className="fa-solid fa-trash"></i></button>
         </form>
     )
 }

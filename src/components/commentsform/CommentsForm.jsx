@@ -21,9 +21,11 @@ export default function CommentsForm({ pokemonId }) {
             [formValues.user_name, formValues.comment, formValues.rating, formValues.pokemon_id]
         );
 
-        revalidatePath("/pokemons");
+        //revalidatePath("/pokemons");
+        revalidatePath(`/pokemons/${pokemonId}`);
 
-        redirect("/pokemons");
+        //redirect("/pokemons");
+        redirect(`/pokemons/${pokemonId}`);
     }
 
     return (

@@ -41,6 +41,8 @@ export default async function PokemonIdPage({ params }) {
             <h3 className="pokemon-type-ability">Type: {pokemon.type}</h3>
             <h3 className="pokemon-type-ability">Abilities: {pokemon.ability}</h3>
             <p className="pokemon-description">{pokemon.description}</p>
+
+            <Link href={"/pokemons"} className="back-button">Go Back</Link>
         </div>
 
         <div className="pokemon-comments-section">
@@ -68,7 +70,7 @@ export default async function PokemonIdPage({ params }) {
                             </div>
                             
                         <div className="comment-actions">
-                            <Link href={`/comments/${comment.id}/edit`} className="edit-button">Edit</Link>
+                            <Link href={`/pokemons/${pokemonId}/edit?commentId=${comment.id}`} className="edit-button"><i className="fa-solid fa-pen"></i></Link>
                             <DeleteButton commentId={comment.id} pokemonId={pokemon.id}/>
                         </div>
 

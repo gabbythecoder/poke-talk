@@ -32,14 +32,15 @@ export default async function PokemonsPage({ searchParams }) {
             {pokemons.map((pokemon) => {
                 return (
                     <div className="pokemon-list" key={pokemon.id}>
-                        <Image 
-                            src={pokemon.small_image_url}
-                            alt={pokemon.name}
-                            width={135}
-                            height={135}
-                            
-                            className="pokemon-small-image"
+                        <Link href={`/pokemons/${pokemon.id}`}>
+                            <Image 
+                                src={pokemon.small_image_url}
+                                alt={pokemon.name}
+                                width={135}
+                                height={135}                           
+                                className="pokemon-small-image"
                         />
+                        </Link>
 
                         <Link className="pokemon-list-button" href={`/pokemons/${pokemon.id}`}>
                             <h2>{pokemon.name}</h2>
