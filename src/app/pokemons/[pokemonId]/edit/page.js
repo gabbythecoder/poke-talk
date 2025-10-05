@@ -1,12 +1,10 @@
 import { db } from "@/utils/database-connection";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import Image from "next/image";
-import PokeballIcon from "@/../public/images/pokeball-icon.png";
 
 export default async function EditCommentPage({ params, searchParams }) {
     const pokemonId = (await params).pokemonId;
-    const commentId = await searchParams.commentId;
+    const commentId = (await searchParams).commentId;
 
     if(!commentId) {
         return <p>No comment selected to edit.</p>
@@ -18,7 +16,7 @@ export default async function EditCommentPage({ params, searchParams }) {
     );
 
     const comment = commentsQuery.rows[0];
-    console.log(comment);
+    // console.log(comment);
 
     const pokemonQuery = await db.query(
         `SELECT name FROM pokemon WHERE id = $1`,
@@ -26,7 +24,7 @@ export default async function EditCommentPage({ params, searchParams }) {
     );
 
     const pokemon = pokemonQuery.rows[0];
-    console.log(pokemon);
+    // console.log(pokemon);
 
     if(!comment) {
         return <p>Comment not found.</p>

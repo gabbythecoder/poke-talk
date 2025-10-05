@@ -1,7 +1,6 @@
 import { db } from "@/utils/database-connection";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
-import "./CommentsForm.css";
 
 export default function CommentsForm({ pokemonId }) {
 

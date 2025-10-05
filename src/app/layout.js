@@ -13,6 +13,13 @@ const nunitoSans = Nunito_Sans({
 export const metadata = {
   title: "PokéTalk",
   description: "Pokémon Review Platform",
+  openGraph: {
+    title: "PokéTalk",
+    description: "Pokémon Review Platform",
+    type: "website",
+    url: "https://poketalk.vercel.app/",
+    images: ["/og-image.png"],
+  }
 };
 
 export default function RootLayout({ children }) {

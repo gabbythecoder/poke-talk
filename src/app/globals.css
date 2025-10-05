@@ -280,28 +280,12 @@ body {
 
   .pokemon-description {
     margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
   }
 
   .back-button {
-    background-color: var(--background-colour);
-    color: #f5f5f5;
-    padding: 0.7rem 1rem;
-    width: 50%;
-    margin: 2rem auto 0;
-    border: 2px solid #f5f5f5;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    font-weight: 600;
     text-align: center;
-}
-
-.back-button:hover {
-    background-color: var(--hover-button-secondary);
-    color: var(--secondary-font-colour);
-    border: 2px solid var(--hover-button-secondary);
-    transform: scale(1.05);
-}
+  }
 
   /* === right panel of the page === */
   .pokemon-comments-section {
@@ -382,6 +366,118 @@ body {
     background: rgba(255, 255, 255, 0.95);
 }
 
+  /* === comments form in [pokemonId] page.js === */
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  .form-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 500px; 
+  }
+
+  .form-comment-name {
+    display: flex;
+    align-items: center;
+  }
+
+  .form-input {
+    background-color: #f5f5f5;
+    margin: 0 1rem;
+    padding: 0.4rem;
+    color: var(--secondary-font-colour);
+    border-radius: 12px;
+    width: 50%;
+  }
+
+  .form-textarea {
+    width: 100%;
+    padding: 0.6rem;
+    border-radius: 12px;
+    background-color: #f5f5f5;
+    font-size: 1rem;
+    color: #000;
+    resize: none;
+  }
+
+  .form-fieldset {
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .form-legend {
+    margin-bottom: 0.5rem;
+  }
+
+  .rating-group {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 0.25rem;
+  }
+
+  .radio-button {
+    display: none;
+  }
+
+  .rating-group label {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-image: url("/images/pokeball-icon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .radio-button:checked ~ label, .radio-button:checked ~ label ~ label {
+    opacity: 1;
+    transform: scale(1.1);
+    box-shadow: 0 0 6px rgba(255, 69, 0, 0.5);
+    border-radius: 6px;
+    
+  }
+
+  .rating-group label:hover, .rating-group label:hover ~ label {
+    opacity: 1;
+    transform: scale(1.1);
+    box-shadow: 0 0 6px rgba(255, 69, 0, 0.5);
+    border-radius: 6px;
+  }
+
+  .submit-button, .save-button, .back-button {
+    background-color: var(--background-colour);
+    color: #f5f5f5;
+    padding: 0.7rem 1rem;
+    width: 50%;
+    margin: 0.5rem auto 0;
+    border: 2px solid #f5f5f5;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-weight: 600;
+  }
+
+  .submit-button:hover, .save-button:hover, .back-button:hover {
+    background-color: var(--hover-button-secondary);
+    color: var(--secondary-font-colour);
+    border: 2px solid var(--hover-button-secondary);
+    transform: scale(1.05);
+  }
+
     /* === media queries for [pokemonId] page.js */
 @media (max-width: 768px) {
   .pokemon-details-page {
@@ -391,29 +487,29 @@ body {
   }
 }
 
-/* === edit + delete button === */
-.comment-actions {
-  display: flex;
-  gap: 0.5rem;
-  justify-content: flex-end;
+  /* === edit button === */
+  .comment-actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
   }
 
-.edit-button {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  border: 2px solid black;
-  padding: 0.2rem 0.4rem;
-  font-weight: 600;
-  border-radius: 12px;
-  transition: all 0.4s ease-in-out;
-}
+  .edit-button {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border: 2px solid black;
+    padding: 0.2rem 0.4rem;
+    font-weight: 600;
+    border-radius: 12px;
+    transition: all 0.4s ease-in-out;
+  }
 
-.edit-button:hover {
-  background-color: #de9200;
-  border: 2px solid #de9200;
-  transform: scale(1.1);
-}
+  .edit-button:hover {
+    background-color: #de9200;
+    border: 2px solid #de9200;
+    transform: scale(1.1);
+  }
 
 /* === edit comments form === */
 .edit-form-container {
@@ -440,62 +536,4 @@ body {
   margin: 0 auto;
   width: 100%;
   max-width: 500px;
-}
-
-.rating-group {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: flex-end;
-    gap: 0.25rem;
-}
-
-.radio-button {
-    display: none;
-}
-
-.rating-group label {
-    display: inline-block;
-    width: 25px;
-    height: 25px;
-    background-image: url("/images/pokeball-icon.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    opacity: 0.5;
-    cursor: pointer;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-.radio-button:checked ~ label, .radio-button:checked ~ label ~ label {
-    opacity: 1;
-    transform: scale(1.1);
-    box-shadow: 0 0 6px rgba(255, 69, 0, 0.5);
-    border-radius: 6px;
-    
-}
-
-.rating-group label:hover, .rating-group label:hover ~ label {
-    opacity: 1;
-    transform: scale(1.1);
-    box-shadow: 0 0 6px rgba(255, 69, 0, 0.5);
-    border-radius: 6px;
-}
-
-.save-button {
-    background-color: var(--background-colour);
-    color: #f5f5f5;
-    padding: 0.7rem 1rem;
-    width: 50%;
-    margin: 1.5rem auto 0;
-    border: 2px solid #f5f5f5;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    font-weight: 600;
-}
-
-.save-button:hover {
-    background-color: var(--hover-button-secondary);
-    color: var(--secondary-font-colour);
-    border: 2px solid var(--hover-button-secondary);
-    transform: scale(1.05);
 }
