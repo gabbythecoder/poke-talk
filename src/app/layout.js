@@ -18,7 +18,7 @@ export const metadata = {
     description: "Pokémon Review Platform",
     type: "website",
     url: "https://poketalk.vercel.app/",
-    images: ["/og-image.png"],
+    images: ["https://poketalk.vercel.app/og-image.png"],
   }
 };
 
